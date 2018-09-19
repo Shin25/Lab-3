@@ -29,6 +29,7 @@ public class WebScraper {
 //    System.out.println(WordCount(urlToString("http://tgftp.nws.noaa.gov/data/raw/fz/fzus53.klot.srf.lot.txt")));
 //    System.out.println(WordCount(urlToString("https://www.bls.gov/tus/charts/chart9.txt")));
       System.out.println(OneWordCount(urlToString("http://erdani.com/tdpl/hamlet.txt")));
+      System.out.println(UniqueWords(urlToString("http://erdani.com/tdpl/hamlet.txt")));
     }
     /**
      * @param s String from the url
@@ -46,5 +47,17 @@ public class WebScraper {
         }
         return count;
     }
-//    public static int
+    public static int UniqueWords(String s) {
+        int Unique = 0;
+        String[] wrds = new String[s.length()];
+        String[] temp = new String[s.length()];
+        for (int i = 0; i < wrds.length; i++) {
+            for (int j = 0; j < wrds.length; j++) {
+                if (temp[i].equals(wrds[j]) && !temp[j].equals(wrds[i])) {
+                    Unique++;
+                }
+            }
+        }
+        return Unique;
+    }
 }
